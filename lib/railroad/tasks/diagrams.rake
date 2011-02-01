@@ -4,23 +4,23 @@ require 'railroad'
 namespace :doc do
   namespace :diagrams do
     desc "Draw model diagrams"
-    task :models => :environment do
-      doc_diagrams_generate(ModelsDiagram, 'models', '-a -m -t -M', 'neato')
+    task :models, [:options] => :environment do |t, args|
+      doc_diagrams_generate(ModelsDiagram, 'models', "-a -m -t -M #{args[:options]}", 'neato')
     end
 
     desc "Draw controller diagrams"
-    task :controllers do
-      doc_diagrams_generate(ControllersDiagram, 'controllers', '-C', 'neato')
+    task :controllers, [:options] do |t, args|
+      doc_diagrams_generate(ControllersDiagram, 'controllers', "-C #{args[:options]}", 'neato')
     end
 
     desc "Draw states diagrams"
-    task :states do
-      doc_diagrams_generate(AasmDiagram, 'states', '-A', 'dot')
+    task :states, [:options]  do |t, args|
+      doc_diagrams_generate(AasmDiagram, 'states', "-A #{args[:options]}", 'dot')
     end
 
     desc "Draw Hobo::Lifecycle diagrams"
-    task :lifecycle do
-      doc_diagrams_generate(LifecycleDiagram, 'lifecycle', '-L', 'dot')
+    task :lifecycle, [:options]  do |t, args|
+      doc_diagrams_generate(LifecycleDiagram, 'lifecycle', "-L #{args[:options]}", 'dot')
     end
 end
 

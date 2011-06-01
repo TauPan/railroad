@@ -57,7 +57,15 @@ class AppDiagram
   # Prevents Rails application from writing to STDOUT
   def disable_stdout
     @old_stdout = STDOUT.dup
-    STDOUT.reopen(PLATFORM =~ /mswin/ ? "NUL" : "/dev/null")
+
+    # Ruby 1.8.x and 1.9.x compatibility.
+    if RUBY_VERSION >= "1.9"
+      current_platform = RUBY_PLATFORM
+    else
+      current_platform = PLATFORM
+    end
+
+    STDOUT.reopen(current_platform =~ /mswin/ ? "NUL" : "/dev/null")
   end
 
   # Restore STDOUT  
@@ -76,10 +84,20 @@ class AppDiagram
   def load_environment
     begin
       disable_stdout
-      require "config/environment"
+
+      # Ruby 1.8.x and 1.9.x compatibility.
+      if RUBY_VERSION >= "1.9"
+        environment = CURRENT_PATH + "/config/environment.rb"
+      else
+        environment = "config/environment"
+      end
+
+      require environment
+
       enable_stdout
     rescue LoadError
       enable_stdout
+      puts Dir.pwd
       print_error "application environment"
       raise
     end

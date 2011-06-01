@@ -15,13 +15,18 @@
 #
 
 $: << File.join(File.dirname(__FILE__), '../lib/')
+
 require 'railroad'
 
 options = OptionsStruct.new
 
 options.parse ARGV
 
-old_dir = Dir.pwd
+# This is the current execution path. If you are executing
+# $ cd /path/to/rails/app 
+# $ railroad -M 
+# The path of this current folder will be keeped by CURRENT_PATH constant
+CURRENT_PATH = Dir.pwd
 
 Dir.chdir(options.root) if options.root != ''
 
@@ -41,7 +46,6 @@ end
 
 diagram.generate
 
-Dir.chdir(old_dir)
+Dir.chdir(CURRENT_PATH)
 
 diagram.print
-

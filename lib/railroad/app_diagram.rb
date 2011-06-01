@@ -97,7 +97,6 @@ class AppDiagram
       enable_stdout
     rescue LoadError
       enable_stdout
-      puts Dir.pwd
       print_error "application environment"
       raise
     end

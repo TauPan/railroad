@@ -95,7 +95,7 @@ class ModelsDiagram < AppDiagram
     generated = false
 
     # Is current_clas derived from ActiveRecord::Base?
-    if current_class.respond_to?'reflect_on_all_associations'
+    if current_class.respond_to?('reflect_on_all_associations') && current_class.respond_to?('abstract_class')
 
 
       node_attribs = []

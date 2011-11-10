@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = "javier@smaldone.com.ar"
   s.executables = ["railroad"]
   s.extra_rdoc_files = ["History.txt", "Manifest.txt", "README.txt"]
-  s.files = ["COPYING", "ChangeLog", "History.txt", "Manifest.txt", "README.txt", "Rakefile", "bin/railroad", "init.rb", "lib/railroad.rb", "lib/railroad/aasm_diagram.rb", "lib/railroad/app_diagram.rb", "lib/railroad/controllers_diagram.rb", "lib/railroad/diagram_graph.rb", "lib/railroad/models_diagram.rb", "lib/railroad/options_struct.rb", "lib/railroad/tasks/diagrams.rb", "lib/railroad/tasks/diagrams.rake"]
+  s.files = ["COPYING", "ChangeLog", "History.txt", "Manifest.txt", "README.txt", "Rakefile", "bin/railroad", "init.rb", "lib/railroad.rb", "lib/railroad/aasm_diagram.rb", "lib/railroad/app_diagram.rb", "lib/railroad/controllers_diagram.rb", "lib/railroad/diagram_graph.rb", "lib/railroad/lifecycle_diagram.rb", "lib/railroad/models_diagram.rb", "lib/railroad/options_struct.rb", "lib/railroad/tasks/diagrams.rb", "lib/railroad/tasks/diagrams.rake"]
   s.has_rdoc = true
   s.homepage = "http://railroad.rubyforge.org"
   s.rdoc_options = ["--main", "README.txt"]
